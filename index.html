@@ -26,7 +26,7 @@ body {
 .container {
   max-width: 600px;  
   width: 100%;
-  background: #add8e6;
+  background: #fffff1;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -77,8 +77,13 @@ input, select, textarea {
   -moz-appearance: none;
   appearance: none;
 }
-
-input:focus, select:focus, textarea:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border: 3px solid #3b82f6; /* Setzt die Randfarbe und -breite */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); /* Optional: fügt einen Schlagschatten hinzu */
+}
 
 
 input:hover, select:hover, textarea:hover {
@@ -996,6 +1001,7 @@ function resetForm() {
 </script>
 </body>
 </html>
+
 
 
 
