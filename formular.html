@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Formular Dom-Esch</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+  padding: 10px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #1e293b;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 600px;  
+  width: 100%;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  margin: 10px 0;
+}
+
+h2, h3 {
+  text-align: center;
+  margin: 0 0 20px 0;
+  font-weight: 600;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+}
+
+h2 { 
+  font-size: 1.5rem; 
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 15px;
+}
+h3 { 
+  font-size: 1.1rem; 
+  margin: 25px 0 15px 0; 
+  color: #475569;
+}
+
+label {
+  display: block;
+  margin: 15px 0 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 16px; /* Prevents zoom on iOS */
+  background: #ffffff;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  color: #1f2937;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+input:hover, select:hover, textarea:hover {
+  border-color: #9ca3af;
+}
+
+button {
+  margin-top: 12px;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-height: 48px; /* Better touch target */
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:hover { 
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Buttons */
+.btn-partner { 
+  background: #374151; 
+  color: white; 
+  border: 1px solid #1f2937;
+  width: 100%;
+  margin-bottom: 8px;
+}
+.btn-partner:hover {
+  background: #1f2937;
+}
+
+.btn-child { 
+  background: #4b5563; 
+  color: white; 
+  border: 1px solid #374151;
+  width: 100%;
+}
+.btn-child:hover {
+  background: #374151;
+}
+
+.btn-finish { 
+  background: #6b7280; 
+  color: white; 
+  width: 100%; 
+  font-size: 1rem; 
+  padding: 16px; 
+  margin-top: 25px; 
+  border: 1px solid #4b5563;
+}
+.btn-finish:hover {
+  background: #4b5563;
+}
+
+.btn-send { 
+  background: #374151; 
+  color: white; 
+  width: 100%; 
+  margin: 20px 0; 
+  font-size: 1rem; 
+  padding: 16px; 
+  border: 1px solid #1f2937;
+}
+.btn-send:hover {
+  background: #1f2937;
+}
+
+.btn-back { 
+  background: #6b7280; 
+  color: white; 
+  width: 100%; 
+  border: 1px solid #4b5563;
+}
+.btn-back:hover {
+  background: #4b5563;
+}
+
+.btn-yes { 
+  background: #374151; 
+  color: white; 
+  border: 1px solid #1f2937;
+}
+.btn-yes:hover {
+  background: #1f2937;
+}
+
+.btn-no { 
+  background: #6b7280; 
+  color: white; 
+  border: 1px solid #4b5563;
+}
+.btn-no:hover {
+  background: #4b5563;
+}
+
+/* Person Block */
+.person-block {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+}
+
+.person-block:hover {
+  border-color: #d1d5db;
+  background: #f3f4f6;
+}
+
+.person-block h4 {
+  margin: 0 0 15px 0;
+  color: #374151;
+  font-size: 1rem;
+  font-weight: 600;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 10px;
+}
+
+/* Übersicht als weiße Karten */
+#overviewTable {
+  border-collapse: separate;
+  border-spacing: 0 12px;
+  width: 100%;
+}
+
+#overviewTable thead {
+  display: none;
+}
+
+#overviewTable tbody tr {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 12px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 12px;
+}
+
+#overviewTable td {
+  text-align: left;
+  font-size: 0.875rem;
+  border: none;
+  padding: 2px 0;
+  color: #374151;
+}
+
+/* Rolle (z. B. Kind, Ehepartner) fett */
+#overviewTable td:first-child {
+  font-weight: 600;
+  grid-column: span 2;
+  margin-bottom: 8px;
+  color: #1f2937;
+  font-size: 0.9rem;
+}
+
+/* Buttons unten rechts */
+#overviewTable td:last-child {
+  text-align: right;
+  grid-column: span 2;
+  margin-top: 12px;
+}
+
+/* Language Switch */
+.lang-select {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px auto 25px auto;
+  padding: 6px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  width: fit-content;
+}
+
+.lang-btn {
+  font-size: 16px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  min-height: 44px;
+}
+
+.lang-btn.active {
+  border-color: #374151;
+  background: #374151;
+  color: white;
+  box-shadow: 0 2px 4px rgba(55, 65, 81, 0.2);
+}
+
+.lang-btn:hover {
+  background: #4b5563;
+  border-color: #4b5563;
+}
+
+/* Status Messages */
+.status-message {
+  padding: 16px 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.status-success { 
+  background: #f0fdf4; 
+  color: #166534; 
+  border: 1px solid #bbf7d0; 
+}
+.status-error { 
+  background: #fef2f2; 
+  color: #dc2626; 
+  border: 1px solid #fecaca; 
+}
+.status-loading { 
+  background: #eff6ff; 
+  color: #1d4ed8; 
+  border: 1px solid #bfdbfe; 
+}
+
+/* Homephone options */
+.homephone-options {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.homephone-options button {
+  flex: 1;
+  margin-top: 0;
+}
+
+/* Child mobile options */
+.child-mobile-options {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.child-mobile-options button {
+  flex: 1;
+  margin-top: 0;
+}
+
+/* Hidden class */
+.hidden {
+  display: none;
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+  body {
+    padding: 5px;
+    align-items: flex-start;
+  }
+  
+  .container { 
+    padding: 16px; 
+    margin: 5px;
+    border-radius: 6px;
+  }
+  
+  h2 { 
+    font-size: 1.25rem; 
+    margin-bottom: 15px;
+  }
+  
+  h3 { 
+    font-size: 1rem; 
+    margin: 20px 0 12px 0;
+  }
+  
+  label {
+    margin: 12px 0 5px;
+    font-size: 0.8rem;
+  }
+  
+  input, select, textarea {
+    padding: 12px 14px;
+    font-size: 16px;
+    border-radius: 6px;
+  }
+  
+  button {
+    padding: 12px 16px;
+    font-size: 14px;
+    min-height: 44px;
+    margin-top: 8px;
+  }
+  
+  .btn-partner, .btn-child {
+    margin-bottom: 6px;
+  }
+  
+  .lang-select {
+    margin: 15px auto 20px auto;
+    padding: 4px;
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+  
+  .lang-btn {
+    font-size: 14px;
+    padding: 8px 12px;
+    min-height: 40px;
+    flex: 1;
+    max-width: 120px;
+  }
+  
+  .person-block {
+    padding: 16px;
+    margin-top: 15px;
+  }
+  
+  .person-block h4 {
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+  }
+  
+  .homephone-options, .child-mobile-options {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .homephone-options button, .child-mobile-options button {
+    width: 100%;
+  }
+  
+  #overviewTable tbody tr {
+    padding: 16px;
+    gap: 6px 10px;
+  }
+  
+  #overviewTable td {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 2px;
+  }
+  
+  .container { 
+    padding: 12px; 
+    margin: 2px;
+  }
+  
+  h2 { 
+    font-size: 1.1rem; 
+    padding-bottom: 10px;
+  }
+  
+  h3 { 
+    font-size: 0.9rem; 
+    margin: 15px 0 10px 0;
+  }
+  
+  label {
+    margin: 10px 0 4px;
+    font-size: 0.75rem;
+  }
+  
+  input, select, textarea {
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 10px 14px;
+    font-size: 13px;
+    min-height: 40px;
+  }
+  
+  .lang-select {
+    margin: 12px auto 18px auto;
+    padding: 3px;
+    max-width: 280px;
+  }
+  
+  .lang-btn {
+    font-size: 13px;
+    padding: 6px 10px;
+    min-height: 36px;
+    max-width: 110px;
+  }
+  
+  .person-block {
+    padding: 12px;
+    margin-top: 12px;
+  }
+  
+  .person-block h4 {
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+  }
+  
+  #overviewTable tbody tr {
+    padding: 12px;
+    gap: 4px 8px;
+  }
+  
+  #overviewTable td {
+    font-size: 0.75rem;
+  }
+  
+  .status-message {
+    padding: 12px 16px;
+    margin: 15px 0;
+    font-size: 0.8rem;
+  }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  body {
+    align-items: flex-start;
+    padding: 10px;
+  }
+  
+  .container {
+    margin: 10px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  button:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  input:hover, select:hover, textarea:hover {
+    border-color: #d1d5db;
+  }
+  
+  .person-block:hover {
+    border-color: #e5e7eb;
+    background: #f9fafb;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  input, select, textarea {
+    border-width: 2px;
+  }
+  
+  button {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  button:hover {
+    transform: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2 id="title">Formular Dom-Esch</h2>
+
+<div class="lang-select">
+  <button class="lang-btn active" onclick="setLanguage('de')">Deutsch</button>
+  <button class="lang-btn" onclick="setLanguage('ru')">Русский</button>
+</div>
+
+<div id="main-form">
+  <label id="lbl-firstname">Vorname</label>
+  <input type="text" id="firstname">
+  
+  <label id="lbl-lastname">Nachname</label>
+  <input type="text" id="lastname">
+  
+  <label id="lbl-age">Alter</label>
+  <input type="number" id="age">
+  
+  <label id="lbl-street">Straße</label>
+  <input type="text" id="street">
+  
+  <label id="lbl-zip">Postleitzahl</label>
+  <input type="text" id="zip">
+  
+  <label id="lbl-city">Stadt</label>
+  <input type="text" id="city">
+  
+  <label id="lbl-birth">Geburtsdatum</label>
+  <input type="date" id="birth">
+  
+  <label id="lbl-mobile">Handynummer</label>
+  <input type="tel" id="mobile">
+
+  <label id="lbl-homephone">Haustelefonnummer</label>
+  <div class="homephone-options">
+    <button class="btn-yes" id="btn-home-yes" onclick="showHomephone()">📞 Eingeben</button>
+    <button class="btn-no" id="btn-home-no" onclick="noHomephone()">🚫 Keine</button>
+  </div>
+  <input type="tel" id="homephone" class="hidden">
+
+  <h3 id="lbl-addperson">Weitere Personen hinzufügen</h3>
+  <button class="btn-partner" onclick="addPerson('partner')">➕ Ehepartner hinzufügen</button>
+  <button class="btn-child" onclick="addPerson('child')">➕ Kind hinzufügen</button>
+  <div id="extraPersons"></div>
+
+  <button class="btn-finish" onclick="showOverview()" id="btn-finish">Sind Sie fertig?</button>
+</div>
+
+<div id="overview" style="display:none;">
+  <h2 id="overview-title">Übersicht</h2>
+  <table id="overviewTable">
+    <thead>
+      <tr>
+        <th>Rolle</th>
+        <th>Name</th>
+        <th>Geburtsdatum</th>
+        <th>Handy</th>
+        <th>Haustelefon</th>
+        <th>Straße</th>
+        <th>PLZ</th>
+        <th>Stadt</th>
+        <th>Aktionen</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  
+  <div id="status-message"></div>
+  
+  <button class="btn-send" onclick="sendToGoogleSheets()">Senden</button>
+  <button class="btn-back" onclick="goBack()">↩️ Zurück</button>
+</div>
+</div>
+
+<!-- Verstecktes Formular für Google Sheets -->
+<form id="googleForm" style="display:none;" method="POST" target="hidden_iframe">
+  <input name="familyName" id="form_familyName">
+  <input name="timestamp" id="form_timestamp">  
+  <input name="data" id="form_data">
+</form>
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<script>
+// TODO: Hier deine Google Apps Script URL einfügen
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxA8z2NyYwUFe9jgHLf36kCGdgcATCtpLDojbV6ZKzJPWbWdv3bfRoNjaqHkfcc4cTE/exec";
+
+let currentLang = "de"; 
+let homephoneValue = "-";
+
+const texts = {
+  de: {
+    title: "Formular",
+    firstname: "Vorname",
+    lastname: "Nachname", 
+    age: "Alter",
+    street: "Straße",
+    zip: "Postleitzahl",
+    city: "Stadt",
+    birth: "Geburtsdatum",
+    mobile: "Handynummer",
+    homephone: "Haustelefonnummer",
+    home_yes: "📞 Eingeben",
+    home_no: "🚫 Keine",
+    add: "Weitere Personen hinzufügen",
+    finish: "Sind Sie fertig?",
+    partner: "Ehepartner",
+    child: "Kind",
+    main_person: "Hauptperson",
+    overview: "Alles richtig?",
+    send: "Senden",
+    delete: "Löschen",
+    back: "↩️ Zurück"
+  },
+  ru: {
+    title: "Форма",
+    firstname: "Имя",
+    lastname: "Фамилия",
+    age: "Возраст", 
+    street: "Улица",
+    zip: "Почтовый индекс",
+    city: "Город",
+    birth: "Дата рождения",
+    mobile: "Мобильный номер",
+    homephone: "Домашний телефон",
+    home_yes: "📞 Ввести",
+    home_no: "🚫 Нет",
+    add: "Добавить людей",
+    finish: "Вы закончили?",
+    partner: "Супруг(а)",
+    child: "Ребёнок",
+    main_person: "Основное лицо",
+    overview: "Всё правильно?",
+    send: "Отправить",
+    delete: "Удалить",
+    back: "↩️ Назад"
+  }
+};
+
+function showStatus(message, type) {
+  const statusDiv = document.getElementById("status-message");
+  statusDiv.innerHTML = `<div class="status-${type}">${message}</div>`;
+  if (type !== 'loading') {
+    setTimeout(() => statusDiv.innerHTML = "", 5000);
+  }
+}
+
+function setLanguage(lang) {
+  currentLang = lang;
+  document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+  if (lang === "de") document.querySelectorAll(".lang-btn")[0].classList.add("active");
+  if (lang === "ru") document.querySelectorAll(".lang-btn")[1].classList.add("active");
+
+  // Update main title
+  document.getElementById("title").innerText = texts[lang].title;
+  
+  // Update all form labels
+  document.getElementById("lbl-firstname").innerText = texts[lang].firstname;
+  document.getElementById("lbl-lastname").innerText = texts[lang].lastname;
+  document.getElementById("lbl-age").innerText = texts[lang].age;
+  document.getElementById("lbl-street").innerText = texts[lang].street;
+  document.getElementById("lbl-zip").innerText = texts[lang].zip;
+  document.getElementById("lbl-city").innerText = texts[lang].city;
+  document.getElementById("lbl-birth").innerText = texts[lang].birth;
+  document.getElementById("lbl-mobile").innerText = texts[lang].mobile;
+  document.getElementById("lbl-homephone").innerText = texts[lang].homephone;
+  
+  // Update homephone option buttons
+  document.getElementById("btn-home-yes").innerText = texts[lang].home_yes;
+  document.getElementById("btn-home-no").innerText = texts[lang].home_no;
+  
+  // Update section headers
+  document.getElementById("lbl-addperson").innerText = texts[lang].add;
+  
+  // Update main form buttons
+  document.getElementById("btn-finish").innerText = texts[lang].finish;
+  
+  // Update add person buttons
+  if (lang === "de") {
+    document.querySelector(".btn-partner").innerText = "➕ Ehepartner hinzufügen";
+    document.querySelector(".btn-child").innerText = "➕ Kind hinzufügen";
+  } else {
+    document.querySelector(".btn-partner").innerText = "➕ Супруг(а) добавить";
+    document.querySelector(".btn-child").innerText = "➕ Ребёнок добавить";
+  }
+  
+  // Update overview page elements (if visible)
+  const overviewTitle = document.getElementById("overview-title");
+  if (overviewTitle) {
+    overviewTitle.innerText = texts[lang].overview;
+  }
+  
+  // Update send button text
+  const sendButton = document.querySelector(".btn-send");
+  if (sendButton) {
+    sendButton.innerText = texts[lang].send;
+  }
+  
+  // Update back button text
+  const backButton = document.querySelector(".btn-back");
+  if (backButton) {
+    backButton.innerText = texts[lang].back;
+  }
+  
+  // Update any existing person blocks (for child mobile options)
+  const personBlocks = document.querySelectorAll(".person-block");
+  personBlocks.forEach(block => {
+    const mobileOptions = block.querySelector(".child-mobile-options");
+    if (mobileOptions) {
+      const yesBtn = mobileOptions.querySelector(".btn-yes");
+      const noBtn = mobileOptions.querySelector(".btn-no");
+      if (yesBtn) yesBtn.innerText = texts[lang].home_yes;
+      if (noBtn) noBtn.innerText = texts[lang].home_no;
+    }
+  });
+}
+
+function showHomephone() { 
+  document.getElementById("homephone").classList.remove("hidden"); 
+  homephoneValue = ""; 
+}
+
+function noHomephone() { 
+  document.getElementById("homephone").classList.add("hidden"); 
+  document.getElementById("homephone").value = ""; 
+  homephoneValue = "-"; 
+}
+
+function addPerson(type) {
+  let role = (type === "partner") ? texts[currentLang].partner : texts[currentLang].child;
+  let div = document.createElement("div"); 
+  div.className = "person-block"; 
+  div.setAttribute("data-role", role);
+  
+  let html = "<h4>" + role + "</h4>" +
+    "<label>" + texts[currentLang].firstname + "</label><input type='text' class='pfirstname'>" +
+    "<label>" + texts[currentLang].lastname + "</label><input type='text' class='plastname'>" +
+    "<label>" + texts[currentLang].birth + "</label><input type='date' class='pbirth'>";
+    
+  if (type === "child") {
+    html += "<label>" + texts[currentLang].mobile + "</label>" +
+      "<div class='child-mobile-options'>" +
+      "<button class='btn-yes' type='button' onclick='showChildMobile(this)'>" + texts[currentLang].home_yes + "</button>" +
+      "<button class='btn-no' type='button' onclick='noChildMobile(this)'>" + texts[currentLang].home_no + "</button>" +
+      "</div>" +
+      "<input type='tel' class='pmobile hidden'>";
+  } else {
+    html += "<label>" + texts[currentLang].mobile + "</label><input type='tel' class='pmobile'>";
+  }
+  
+  div.innerHTML = html;
+  document.getElementById("extraPersons").appendChild(div);
+}
+
+function showChildMobile(btn) { 
+  let input = btn.parentElement.nextElementSibling; 
+  input.classList.remove("hidden"); 
+  input.value = ""; 
+}
+
+function noChildMobile(btn) { 
+  let input = btn.parentElement.nextElementSibling; 
+  input.classList.add("hidden"); 
+  input.value = "-"; 
+}
+
+function collectData() {
+  let rows = []; 
+  let homeVal = (homephoneValue === "-") ? "-" : document.getElementById("homephone").value;
+  
+  // Hauptperson
+  rows.push([
+    texts[currentLang].main_person,
+    document.getElementById("firstname").value + " " + document.getElementById("lastname").value,
+    document.getElementById("birth").value,
+    document.getElementById("mobile").value,
+    homeVal || "-",
+    document.getElementById("street").value,
+    document.getElementById("zip").value,
+    document.getElementById("city").value
+  ]);
+
+  // Weitere Personen
+  let persons = document.querySelectorAll(".person-block");
+  persons.forEach(p => {
+    let mobileInput = p.querySelector(".pmobile");
+    let mobileVal = (mobileInput) ? (mobileInput.value || "-") : "-";
+    rows.push([
+      p.getAttribute("data-role"),
+      p.querySelector(".pfirstname").value + " " + p.querySelector(".plastname").value,
+      p.querySelector(".pbirth").value,
+      mobileVal,
+      "-", "-", "-", "-"
+    ]);
+  });
+  
+  return rows;
+}
+
+function showOverview() {
+  let data = collectData(); 
+  let tbody = document.querySelector("#overviewTable tbody"); 
+  tbody.innerHTML = "";
+
+  data.forEach((row, index) => {
+    let tr = document.createElement("tr");
+    row.forEach(cell => { 
+      let td = document.createElement("td"); 
+      td.textContent = cell; 
+      tr.appendChild(td); 
+    });
+
+    let actionTd = document.createElement("td");
+    if (index > 0) {
+      let delBtn = document.createElement("button");
+      delBtn.textContent = texts[currentLang].delete;
+      delBtn.style.background = "#f44336";
+      delBtn.style.color = "white";
+      delBtn.style.border = "none";
+      delBtn.style.borderRadius = "8px";
+      delBtn.style.padding = "5px 10px";
+      delBtn.style.cursor = "pointer";
+      delBtn.onclick = function() { 
+        tr.remove(); 
+        let extraPersons = document.getElementById("extraPersons"); 
+        let personDivs = extraPersons.querySelectorAll(".person-block"); 
+        if (personDivs[index - 1]) personDivs[index - 1].remove(); 
+      };
+      actionTd.appendChild(delBtn);
+    } else { 
+      actionTd.textContent = "-"; 
+    }
+    tr.appendChild(actionTd);
+    tbody.appendChild(tr);
+  });
+
+  // Update all text elements to current language before showing overview
+  document.getElementById("overview-title").innerText = texts[currentLang].overview;
+  
+  const sendButton = document.querySelector(".btn-send");
+  if (sendButton) {
+    sendButton.innerText = texts[currentLang].send;
+  }
+  
+  const backButton = document.querySelector(".btn-back");
+  if (backButton) {
+    backButton.innerText = texts[currentLang].back;
+  }
+
+  // Hide language selector on overview page
+  document.querySelector(".lang-select").style.display = "none";
+  
+  document.getElementById("main-form").style.display = "none";
+  document.getElementById("overview").style.display = "block";
+}
+
+function goBack() { 
+  document.getElementById("overview").style.display = "none"; 
+  document.getElementById("main-form").style.display = "block"; 
+  
+  // Show language selector again on main form
+  document.querySelector(".lang-select").style.display = "flex";
+  
+  document.getElementById("status-message").innerHTML = "";
+}
+
+function sendToGoogleSheets() {
+  if (GOOGLE_SCRIPT_URL === "HIER_DEINE_GOOGLE_SCRIPT_URL_EINFÜGEN") {
+    showStatus("❌ Bitte Google Apps Script URL konfigurieren!", "error");
+    return;
+  }
+
+  showStatus("🔄 Sende Daten an Google Sheets...", "loading");
+
+  try {
+    let data = collectData();
+    
+    // Familienname für Dateiname
+    let familyName = document.getElementById("lastname").value || "Familie";
+    let timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+    
+    // Verstecktes Formular ausfüllen
+    document.getElementById("googleForm").action = GOOGLE_SCRIPT_URL;
+    document.getElementById("form_familyName").value = familyName;
+    document.getElementById("form_timestamp").value = timestamp;
+    document.getElementById("form_data").value = JSON.stringify(data);
+    
+    // Formular submitten (umgeht CORS komplett)
+    document.getElementById("googleForm").submit();
+    
+    // Erfolgsmeldung nach kurzer Verzögerung
+    setTimeout(() => {
+      showStatus(`✅ Familie ${familyName} erfolgreich gespeichert!`, "success");
+      setTimeout(() => {
+        if (confirm("Möchten Sie das Formular für eine neue Familie zurücksetzen?")) {
+          resetForm();
+        }
+      }, 2000);
+    }, 2000);
+    
+  } catch (error) {
+    console.error('Error:', error);
+    showStatus("❌ Fehler beim Senden. Bitte versuchen Sie es erneut.", "error");
+  }
+}
+
+function resetForm() {
+  document.getElementById("main-form").style.display = "block";
+  document.getElementById("overview").style.display = "none";
+  document.getElementById("extraPersons").innerHTML = "";
+  document.getElementById("firstname").value = "";
+  document.getElementById("lastname").value = "";
+  document.getElementById("age").value = "";
+  document.getElementById("street").value = "";
+  document.getElementById("zip").value = "";
+  document.getElementById("city").value = "";
+  document.getElementById("birth").value = "";
+  document.getElementById("mobile").value = "";
+  document.getElementById("homephone").value = ""; 
+  document.getElementById("homephone").classList.add("hidden"); 
+  document.getElementById("status-message").innerHTML = "";
+  homephoneValue = "-";
+}
+</script>
+</body>
+</html>
+
