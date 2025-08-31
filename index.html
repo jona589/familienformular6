@@ -40,6 +40,7 @@ h2, h3 {
   font-weight: 600;
   color: #0f172a;
   letter-spacing: -0.025em;
+  
 }
 
 h2 { 
@@ -793,9 +794,14 @@ function setLanguage(lang) {
 }
 
 function showHomephone() { 
-  document.getElementById("homephone").classList.remove("hidden"); 
+  const input = document.getElementById("homephone");
+  input.classList.remove("hidden"); 
+  input.value = "";          // optional: vorherigen Inhalt löschen
+  input.focus();             // fokussiert das Input-Feld
+  input.select();            // markiert den Text, falls etwas drin ist
   homephoneValue = ""; 
 }
+
 
 function noHomephone() { 
   document.getElementById("homephone").classList.add("hidden"); 
@@ -1001,6 +1007,7 @@ function resetForm() {
 </script>
 </body>
 </html>
+
 
 
 
