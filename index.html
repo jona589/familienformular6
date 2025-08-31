@@ -78,11 +78,14 @@ input, select, textarea {
   appearance: none;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border: 3px solid #3b82f6; /* Setzt die Randfarbe und -breite */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); /* Optional: fügt einen Schlagschatten hinzu */
 }
+
 
 input:hover, select:hover, textarea:hover {
   border-color: #9ca3af;
@@ -999,6 +1002,7 @@ function resetForm() {
 </script>
 </body>
 </html>
+
 
 
 
