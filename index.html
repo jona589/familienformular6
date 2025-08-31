@@ -11,7 +11,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #ffffff;
+  background: #f8fafc;
   min-height: 100vh;
   padding: 10px;
   margin: 0;
@@ -26,7 +26,7 @@ body {
 .container {
   max-width: 600px;  
   width: 100%;
-  background: #f1f5f9;
+  background: #ffffff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -40,7 +40,6 @@ h2, h3 {
   font-weight: 600;
   color: #0f172a;
   letter-spacing: -0.025em;
-  
 }
 
 h2 { 
@@ -78,14 +77,12 @@ input, select, textarea {
   -moz-appearance: none;
   appearance: none;
 }
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border: 3px solid #3b82f6; /* Setzt die Randfarbe und -breite */
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); /* Optional: fügt einen Schlagschatten hinzu */
-}
 
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
 
 input:hover, select:hover, textarea:hover {
   border-color: #9ca3af;
@@ -272,7 +269,7 @@ button:active {
   padding: 6px;
   background: #f1f5f9;
   border-radius: 8px;
-  border: 1px solid #f1f5f9;
+  border: 1px solid #e2e8f0;
   width: fit-content;
 }
 
@@ -592,6 +589,9 @@ button:active {
   <label id="lbl-lastname">Nachname</label>
   <input type="text" id="lastname">
   
+  <label id="lbl-age">Alter</label>
+  <input type="number" id="age">
+  
   <label id="lbl-street">Straße</label>
   <input type="text" id="street">
   
@@ -668,6 +668,7 @@ const texts = {
     title: "Formular",
     firstname: "Vorname",
     lastname: "Nachname", 
+    age: "Alter",
     street: "Straße",
     zip: "Postleitzahl",
     city: "Stadt",
@@ -690,6 +691,7 @@ const texts = {
     title: "Форма",
     firstname: "Имя",
     lastname: "Фамилия",
+    age: "Возраст", 
     street: "Улица",
     zip: "Почтовый индекс",
     city: "Город",
@@ -789,14 +791,9 @@ function setLanguage(lang) {
 }
 
 function showHomephone() { 
-  const input = document.getElementById("homephone");
-  input.classList.remove("hidden"); 
-  input.value = "";          // optional: vorherigen Inhalt löschen
-  input.focus();             // fokussiert das Input-Feld
-  input.select();            // markiert den Text, falls etwas drin ist
+  document.getElementById("homephone").classList.remove("hidden"); 
   homephoneValue = ""; 
 }
-
 
 function noHomephone() { 
   document.getElementById("homephone").classList.add("hidden"); 
@@ -1002,16 +999,4 @@ function resetForm() {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
 
