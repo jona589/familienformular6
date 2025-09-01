@@ -365,64 +365,6 @@ button:active {
     border-radius: 6px;
   }
   
-  h2 { 
-    font-size: 1.25rem; 
-    margin-bottom: 15px;
-  }
-  
-  h3 { 
-    font-size: 1rem; 
-    margin: 20px 0 12px 0;
-  }
-  
-  label {
-    margin: 12px 0 5px;
-    font-size: 0.8rem;
-  }
-  
-  input, select, textarea {
-    padding: 12px 14px;
-    font-size: 16px;
-    border-radius: 6px;
-  }
-  
-  button {
-    padding: 12px 16px;
-    font-size: 14px;
-    min-height: 44px;
-    margin-top: 8px;
-  }
-  
-  .btn-partner, .btn-child {
-    margin-bottom: 6px;
-  }
-  
-  .lang-select {
-    margin: 15px auto 20px auto;
-    padding: 4px;
-    width: 100%;
-    max-width: 300px;
-    justify-content: center;
-  }
-  
-  .lang-btn {
-    font-size: 14px;
-    padding: 8px 12px;
-    min-height: 40px;
-    flex: 1;
-    max-width: 120px;
-  }
-  
-  .person-block {
-    padding: 16px;
-    margin-top: 15px;
-  }
-  
-  .person-block h4 {
-    margin-bottom: 12px;
-    font-size: 0.9rem;
-  }
-  
   .homephone-options, .child-mobile-options {
     flex-direction: column;
     gap: 8px;
@@ -430,144 +372,6 @@ button:active {
   
   .homephone-options button, .child-mobile-options button {
     width: 100%;
-  }
-  
-  #overviewTable tbody tr {
-    padding: 16px;
-    gap: 6px 10px;
-  }
-  
-  #overviewTable td {
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    padding: 2px;
-  }
-  
-  .container { 
-    padding: 12px; 
-    margin: 2px;
-  }
-  
-  h2 { 
-    font-size: 1.1rem; 
-    padding-bottom: 10px;
-  }
-  
-  h3 { 
-    font-size: 0.9rem; 
-    margin: 15px 0 10px 0;
-  }
-  
-  label {
-    margin: 10px 0 4px;
-    font-size: 0.75rem;
-  }
-  
-  input, select, textarea {
-    padding: 10px 12px;
-    font-size: 16px;
-  }
-  
-  button {
-    padding: 10px 14px;
-    font-size: 13px;
-    min-height: 40px;
-  }
-  
-  .lang-select {
-    margin: 12px auto 18px auto;
-    padding: 3px;
-    max-width: 280px;
-  }
-  
-  .lang-btn {
-    font-size: 13px;
-    padding: 6px 10px;
-    min-height: 36px;
-    max-width: 110px;
-  }
-  
-  .person-block {
-    padding: 12px;
-    margin-top: 12px;
-  }
-  
-  .person-block h4 {
-    margin-bottom: 10px;
-    font-size: 0.85rem;
-  }
-  
-  #overviewTable tbody tr {
-    padding: 12px;
-    gap: 4px 8px;
-  }
-  
-  #overviewTable td {
-    font-size: 0.75rem;
-  }
-  
-  .status-message {
-    padding: 12px 16px;
-    margin: 15px 0;
-    font-size: 0.8rem;
-  }
-}
-
-/* Landscape orientation adjustments for mobile */
-@media (max-width: 768px) and (orientation: landscape) {
-  body {
-    align-items: flex-start;
-    padding: 10px;
-  }
-  
-  .container {
-    margin: 10px;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-}
-
-/* Touch device optimizations */
-@media (hover: none) and (pointer: coarse) {
-  button:hover {
-    transform: none;
-    box-shadow: none;
-  }
-  
-  input:hover, select:hover, textarea:hover {
-    border-color: #d1d5db;
-  }
-  
-  .person-block:hover {
-    border-color: #e5e7eb;
-    background: #f9fafb;
-  }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  input, select, textarea {
-    border-width: 2px;
-  }
-  
-  button {
-    border: 2px solid currentColor;
-  }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-    animation: none !important;
-  }
-  
-  button:hover {
-    transform: none;
   }
 }
 </style>
@@ -589,9 +393,6 @@ button:active {
   <label id="lbl-lastname">Nachname</label>
   <input type="text" id="lastname">
   
-  <label id="lbl-age">Alter</label>
-  <input type="number" id="age">
-  
   <label id="lbl-street">Straße</label>
   <input type="text" id="street">
   
@@ -607,17 +408,22 @@ button:active {
   <label id="lbl-mobile">Handynummer</label>
   <input type="tel" id="mobile">
 
-  <label id="lbl-homephone">Haustelefonnummer</label>
-  <div class="homephone-options">
-    <button class="btn-yes" id="btn-home-yes" onclick="showHomephone()">📞 Eingeben</button>
-    <button class="btn-no" id="btn-home-no" onclick="noHomephone()">🚫 Keine</button>
+  <div id="homephone-section">
+    <label id="lbl-homephone">Haustelefonnummer</label>
+    <div class="homephone-options">
+      <button class="btn-yes" id="btn-home-yes" onclick="showHomephone()">📞 Eingeben</button>
+      <button class="btn-no" id="btn-home-no" onclick="noHomephone()">🚫 Keine</button>
+    </div>
+    <input type="tel" id="homephone" class="hidden">
   </div>
-  <input type="tel" id="homephone" class="hidden">
 
   <h3 id="lbl-addperson">Weitere Personen hinzufügen</h3>
-  <button class="btn-partner" onclick="addPerson('partner')">➕ Ehepartner hinzufügen</button>
-  <button class="btn-child" onclick="addPerson('child')">➕ Kind hinzufügen</button>
   <div id="extraPersons"></div>
+  
+  <div id="add-person-buttons">
+    <button class="btn-partner" onclick="addPerson('partner')">➕ Ehepartner hinzufügen</button>
+    <button class="btn-child" onclick="addPerson('child')">➕ Kind hinzufügen</button>
+  </div>
 
   <button class="btn-finish" onclick="showOverview()" id="btn-finish">Sind Sie fertig?</button>
 </div>
@@ -668,7 +474,6 @@ const texts = {
     title: "Formular",
     firstname: "Vorname",
     lastname: "Nachname", 
-    age: "Alter",
     street: "Straße",
     zip: "Postleitzahl",
     city: "Stadt",
@@ -691,7 +496,6 @@ const texts = {
     title: "Форма",
     firstname: "Имя",
     lastname: "Фамилия",
-    age: "Возраст", 
     street: "Улица",
     zip: "Почтовый индекс",
     city: "Город",
@@ -732,7 +536,6 @@ function setLanguage(lang) {
   // Update all form labels
   document.getElementById("lbl-firstname").innerText = texts[lang].firstname;
   document.getElementById("lbl-lastname").innerText = texts[lang].lastname;
-  document.getElementById("lbl-age").innerText = texts[lang].age;
   document.getElementById("lbl-street").innerText = texts[lang].street;
   document.getElementById("lbl-zip").innerText = texts[lang].zip;
   document.getElementById("lbl-city").innerText = texts[lang].city;
@@ -777,9 +580,32 @@ function setLanguage(lang) {
     backButton.innerText = texts[lang].back;
   }
   
-  // Update any existing person blocks (for child mobile options)
+  // Update any existing person blocks
   const personBlocks = document.querySelectorAll(".person-block");
   personBlocks.forEach(block => {
+    // Update the role title (h4)
+    const roleTitle = block.querySelector("h4");
+    const currentRole = block.getAttribute("data-role");
+    if (roleTitle) {
+      if (currentRole === "Ehepartner" || currentRole === "Супруг(а)") {
+        roleTitle.textContent = texts[lang].partner;
+        block.setAttribute("data-role", texts[lang].partner);
+      } else if (currentRole === "Kind" || currentRole === "Ребёнок") {
+        roleTitle.textContent = texts[lang].child;
+        block.setAttribute("data-role", texts[lang].child);
+      }
+    }
+    
+    // Update labels in person blocks
+    const labels = block.querySelectorAll("label");
+    labels.forEach((label, index) => {
+      if (index === 0) label.textContent = texts[lang].firstname;
+      else if (index === 1) label.textContent = texts[lang].lastname;
+      else if (index === 2) label.textContent = texts[lang].birth;
+      else if (index === 3) label.textContent = texts[lang].mobile;
+    });
+    
+    // Update mobile option buttons for children
     const mobileOptions = block.querySelector(".child-mobile-options");
     if (mobileOptions) {
       const yesBtn = mobileOptions.querySelector(".btn-yes");
@@ -792,11 +618,16 @@ function setLanguage(lang) {
 
 function showHomephone() { 
   document.getElementById("homephone").classList.remove("hidden"); 
+  // Auto-Fokus auf das Eingabefeld setzen
+  setTimeout(() => {
+    document.getElementById("homephone").focus();
+  }, 100);
   homephoneValue = ""; 
 }
 
 function noHomephone() { 
-  document.getElementById("homephone").classList.add("hidden"); 
+  // Verstecke die gesamte Haustelefon-Sektion
+  document.getElementById("homephone-section").classList.add("hidden");
   document.getElementById("homephone").value = ""; 
   homephoneValue = "-"; 
 }
@@ -825,11 +656,23 @@ function addPerson(type) {
   
   div.innerHTML = html;
   document.getElementById("extraPersons").appendChild(div);
+  
+  // Scroll zur neuen Person
+  setTimeout(() => {
+    div.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'start' 
+    });
+  }, 100);
 }
 
 function showChildMobile(btn) { 
   let input = btn.parentElement.nextElementSibling; 
   input.classList.remove("hidden"); 
+  // Auto-Fokus auf das Eingabefeld setzen
+  setTimeout(() => {
+    input.focus();
+  }, 100);
   input.value = ""; 
 }
 
@@ -985,7 +828,6 @@ function resetForm() {
   document.getElementById("extraPersons").innerHTML = "";
   document.getElementById("firstname").value = "";
   document.getElementById("lastname").value = "";
-  document.getElementById("age").value = "";
   document.getElementById("street").value = "";
   document.getElementById("zip").value = "";
   document.getElementById("city").value = "";
@@ -993,10 +835,13 @@ function resetForm() {
   document.getElementById("mobile").value = "";
   document.getElementById("homephone").value = ""; 
   document.getElementById("homephone").classList.add("hidden"); 
+  document.getElementById("homephone-section").classList.remove("hidden");
   document.getElementById("status-message").innerHTML = "";
   homephoneValue = "-";
+  
+  // Show language selector again
+  document.querySelector(".lang-select").style.display = "flex";
 }
 </script>
 </body>
 </html>
-
