@@ -403,7 +403,7 @@ button:active {
   <input type="text" id="city">
   
   <label id="lbl-birth">Geburtsdatum</label>
-  <input type="date" id="birth">
+  <input type="text" id="birth" placeholder="TT.MM.JJJJ">
   
   <label id="lbl-mobile">Handynummer</label>
   <input type="tel" id="mobile">
@@ -490,7 +490,8 @@ const texts = {
     overview: "Alles richtig?",
     send: "Senden",
     delete: "Löschen",
-    back: "↩️ Zurück"
+    back: "↩️ Zurück",
+    birth_placeholder: "TT.MM.JJJJ"
   },
   ru: {
     title: "Форма",
@@ -512,7 +513,8 @@ const texts = {
     overview: "Всё правильно?",
     send: "Отправить",
     delete: "Удалить",
-    back: "↩️ Назад"
+    back: "↩️ Назад",
+    birth_placeholder: "ДД.ММ.ГГГГ"
   }
 };
 
@@ -542,6 +544,9 @@ function setLanguage(lang) {
   document.getElementById("lbl-birth").innerText = texts[lang].birth;
   document.getElementById("lbl-mobile").innerText = texts[lang].mobile;
   document.getElementById("lbl-homephone").innerText = texts[lang].homephone;
+  
+  // Update birth field placeholder
+  document.getElementById("birth").placeholder = texts[lang].birth_placeholder;
   
   // Update homephone option buttons
   document.getElementById("btn-home-yes").innerText = texts[lang].home_yes;
@@ -641,7 +646,7 @@ function addPerson(type) {
   let html = "<h4>" + role + "</h4>" +
     "<label>" + texts[currentLang].firstname + "</label><input type='text' class='pfirstname'>" +
     "<label>" + texts[currentLang].lastname + "</label><input type='text' class='plastname'>" +
-    "<label>" + texts[currentLang].birth + "</label><input type='date' class='pbirth'>";
+    "<label>" + texts[currentLang].birth + "</label><input type='text' class='pbirth' placeholder='" + texts[currentLang].birth_placeholder + "'>";
     
   if (type === "child") {
     html += "<label>" + texts[currentLang].mobile + "</label>" +
