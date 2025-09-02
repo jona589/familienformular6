@@ -47,6 +47,7 @@ h2 {
   border-bottom: 2px solid #e2e8f0;
   padding-bottom: 15px;
 }
+
 h3 { 
   font-size: 1.1rem; 
   margin: 25px 0 15px 0; 
@@ -68,7 +69,7 @@ input, select, textarea {
   padding: 14px 16px;
   border-radius: 8px;
   border: 1px solid #d1d5db;
-  font-size: 16px; /* Prevents zoom on iOS */
+  font-size: 16px;
   background: #ffffff;
   transition: all 0.2s ease;
   font-family: inherit;
@@ -88,17 +89,6 @@ input:hover, select:hover, textarea:hover {
   border-color: #9ca3af;
 }
 
-/* Blinking animation */
-.blink {
-  animation: blink 1s infinite;
-  border-color: #3b82f6 !important;
-}
-
-@keyframes blink {
-  0%, 50% { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); }
-  51%, 100% { border-color: #d1d5db; box-shadow: none; }
-}
-
 button {
   margin-top: 12px;
   padding: 14px 20px;
@@ -111,7 +101,7 @@ button {
   font-family: inherit;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  min-height: 48px; /* Better touch target */
+  min-height: 48px;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -124,7 +114,6 @@ button:active {
   transform: translateY(0);
 }
 
-/* Buttons */
 .btn-partner { 
   background: #374151; 
   color: white; 
@@ -132,6 +121,7 @@ button:active {
   width: 100%;
   margin-bottom: 8px;
 }
+
 .btn-partner:hover {
   background: #1f2937;
 }
@@ -142,6 +132,7 @@ button:active {
   border: 1px solid #374151;
   width: 100%;
 }
+
 .btn-child:hover {
   background: #374151;
 }
@@ -155,6 +146,7 @@ button:active {
   margin-top: 25px; 
   border: 1px solid #4b5563;
 }
+
 .btn-finish:hover {
   background: #4b5563;
 }
@@ -168,6 +160,7 @@ button:active {
   padding: 16px; 
   border: 1px solid #1f2937;
 }
+
 .btn-send:hover {
   background: #1f2937;
 }
@@ -178,6 +171,7 @@ button:active {
   width: 100%; 
   border: 1px solid #4b5563;
 }
+
 .btn-back:hover {
   background: #4b5563;
 }
@@ -187,6 +181,7 @@ button:active {
   color: white; 
   border: 1px solid #1f2937;
 }
+
 .btn-yes:hover {
   background: #1f2937;
 }
@@ -196,11 +191,11 @@ button:active {
   color: white; 
   border: 1px solid #4b5563;
 }
+
 .btn-no:hover {
   background: #4b5563;
 }
 
-/* Person Block */
 .person-block {
   margin-top: 20px;
   padding: 20px;
@@ -224,7 +219,6 @@ button:active {
   padding-bottom: 10px;
 }
 
-/* Übersicht als weiße Karten */
 #overviewTable {
   border-collapse: separate;
   border-spacing: 0 12px;
@@ -255,7 +249,6 @@ button:active {
   color: #374151;
 }
 
-/* Rolle (z. B. Kind, Ehepartner) fett */
 #overviewTable td:first-child {
   font-weight: 600;
   grid-column: span 2;
@@ -264,14 +257,12 @@ button:active {
   font-size: 0.9rem;
 }
 
-/* Buttons unten rechts */
 #overviewTable td:last-child {
   text-align: right;
   grid-column: span 2;
   margin-top: 12px;
 }
 
-/* Language Switch */
 .lang-select {
   display: flex;
   justify-content: center;
@@ -308,33 +299,6 @@ button:active {
   border-color: #4b5563;
 }
 
-/* Status Messages */
-.status-message {
-  padding: 16px 20px;
-  margin: 20px 0;
-  border-radius: 8px;
-  text-align: center;
-  font-weight: 500;
-  font-size: 0.875rem;
-}
-
-.status-success { 
-  background: #f0fdf4; 
-  color: #166534; 
-  border: 1px solid #bbf7d0; 
-}
-.status-error { 
-  background: #fef2f2; 
-  color: #dc2626; 
-  border: 1px solid #fecaca; 
-}
-.status-loading { 
-  background: #eff6ff; 
-  color: #1d4ed8; 
-  border: 1px solid #bfdbfe; 
-}
-
-/* Homephone options */
 .homephone-options {
   display: flex;
   gap: 12px;
@@ -346,7 +310,6 @@ button:active {
   margin-top: 0;
 }
 
-/* Child mobile options */
 .child-mobile-options {
   display: flex;
   gap: 12px;
@@ -358,32 +321,47 @@ button:active {
   margin-top: 0;
 }
 
-/* Hidden class */
 .hidden {
   display: none;
 }
 
-/* Mobile-first responsive design */
+.success-message {
+  text-align: center;
+  padding: 30px 20px;
+  margin: 20px 0;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 2px solid #22c55e;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.1);
+}
+
+.success-message h3 {
+  color: #166534;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.success-message p {
+  color: #15803d;
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.checkmark {
+  font-size: 2rem;
+  color: #22c55e;
+}
+
 @media (max-width: 768px) {
-  body {
-    padding: 5px;
-    align-items: flex-start;
-  }
-  
-  .container { 
-    padding: 16px; 
-    margin: 5px;
-    border-radius: 6px;
-  }
-  
-  .homephone-options, .child-mobile-options {
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .homephone-options button, .child-mobile-options button {
-    width: 100%;
-  }
+  body { padding: 5px; }
+  .container { padding: 16px; margin: 5px; }
+  .homephone-options, .child-mobile-options { flex-direction: column; gap: 8px; }
+  .homephone-options button, .child-mobile-options button { width: 100%; }
 }
 </style>
 </head>
@@ -399,25 +377,25 @@ button:active {
 
 <div id="main-form">
   <label id="lbl-firstname">Vorname</label>
-  <input type="text" id="firstname" class="blink" oninput="handleInput(this)">
+  <input type="text" id="firstname">
   
   <label id="lbl-lastname">Nachname</label>
-  <input type="text" id="lastname" oninput="handleInput(this)">
+  <input type="text" id="lastname">
   
   <label id="lbl-street">Straße</label>
-  <input type="text" id="street" oninput="handleInput(this)">
+  <input type="text" id="street">
   
   <label id="lbl-zip">Postleitzahl</label>
-  <input type="text" id="zip" oninput="handleInput(this)">
+  <input type="text" id="zip">
   
   <label id="lbl-city">Stadt</label>
-  <input type="text" id="city" oninput="handleInput(this)">
+  <input type="text" id="city">
   
   <label id="lbl-birth">Geburtsdatum</label>
-  <input type="date" id="birth" onchange="handleInput(this)">
+  <input type="date" id="birth">
   
   <label id="lbl-mobile">Handynummer</label>
-  <input type="tel" id="mobile" placeholder="+49 657 29946832" oninput="handleInput(this)">
+  <input type="tel" id="mobile" placeholder="+49 657 29946832">
 
   <div id="homephone-section">
     <label id="lbl-homephone">Haustelefonnummer</label>
@@ -442,40 +420,25 @@ button:active {
 <div id="overview" style="display:none;">
   <h2 id="overview-title">Übersicht</h2>
   <table id="overviewTable">
-    <thead>
-      <tr>
-        <th>Rolle</th>
-        <th>Name</th>
-        <th>Geburtsdatum</th>
-        <th>Handy</th>
-        <th>Haustelefon</th>
-        <th>Straße</th>
-        <th>PLZ</th>
-        <th>Stadt</th>
-        <th>Aktionen</th>
-      </tr>
-    </thead>
     <tbody></tbody>
   </table>
-  
-  <div id="status-message"></div>
   
   <button class="btn-send" onclick="sendToGoogleSheets()">Senden</button>
   <button class="btn-back" onclick="goBack()">↩️ Zurück</button>
 </div>
+
+<div id="success-screen" class="hidden">
+  <div class="success-message">
+    <h3><span class="checkmark">✅</span><span id="success-title">Die Nachricht wurde erfolgreich an Jonathan gesendet</span></h3>
+    <p id="success-subtitle">Schönen Tag Ihnen noch!</p>
+  </div>
+  <button class="btn-finish" onclick="resetForm()">Neue Eingabe</button>
 </div>
 
-<!-- Verstecktes Formular für Google Sheets -->
-<form id="googleForm" style="display:none;" method="POST" target="hidden_iframe">
-  <input name="familyName" id="form_familyName">
-  <input name="timestamp" id="form_timestamp">  
-  <input name="data" id="form_data">
-</form>
-<iframe name="hidden_iframe" style="display:none;"></iframe>
+</div>
 
 <script>
-// TODO: Hier deine Google Apps Script URL einfügen
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxA8z2NyYwUFe9jgHLf36kCGdgcATCtpLDojbV6ZKzJPWbWdv3bfRoNjaqHkfcc4cTE/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwABGx9Nqu0197ISHSJbBpITPfQ0ZhvdIful7o7jt2R67rKaHUPZizWB6e6KiJYbkKC2g/exec";
 
 let currentLang = "de"; 
 let homephoneValue = "-";
@@ -501,7 +464,10 @@ const texts = {
     overview: "Alles richtig?",
     send: "Senden",
     delete: "Löschen",
-    back: "↩️ Zurück"
+    back: "↩️ Zurück",
+    success_title: "Die Nachricht wurde erfolgreich an Jonathan gesendet",
+    success_subtitle: "Schönen Tag Ihnen noch!",
+    new_entry: "Neue Eingabe"
   },
   ru: {
     title: "Форма",
@@ -523,45 +489,12 @@ const texts = {
     overview: "Всё правильно?",
     send: "Отправить",
     delete: "Удалить",
-    back: "↩️ Назад"
+    back: "↩️ Назад",
+    success_title: "Сообщение было успешно отправлено Джонатану",
+    success_subtitle: "Хорошего дня!",
+    new_entry: "Новый ввод"
   }
 };
-
-// Blinking field management
-function handleInput(field) {
-  if (field.value.trim() !== '') {
-    field.classList.remove('blink');
-    // Find next empty field and make it blink
-    const nextField = getNextEmptyField(field);
-    if (nextField) {
-      nextField.classList.add('blink');
-      nextField.focus();
-    }
-  } else {
-    field.classList.add('blink');
-  }
-}
-
-function getNextEmptyField(currentField) {
-  const fields = ['firstname', 'lastname', 'street', 'zip', 'city', 'birth', 'mobile'];
-  const currentIndex = fields.indexOf(currentField.id);
-  
-  for (let i = currentIndex + 1; i < fields.length; i++) {
-    const field = document.getElementById(fields[i]);
-    if (field && field.value.trim() === '') {
-      return field;
-    }
-  }
-  return null;
-}
-
-function showStatus(message, type) {
-  const statusDiv = document.getElementById("status-message");
-  statusDiv.innerHTML = `<div class="status-${type}">${message}</div>`;
-  if (type !== 'loading') {
-    setTimeout(() => statusDiv.innerHTML = "", 3000);
-  }
-}
 
 function setLanguage(lang) {
   currentLang = lang;
@@ -569,10 +502,7 @@ function setLanguage(lang) {
   if (lang === "de") document.querySelectorAll(".lang-btn")[0].classList.add("active");
   if (lang === "ru") document.querySelectorAll(".lang-btn")[1].classList.add("active");
 
-  // Update main title
   document.getElementById("title").innerText = texts[lang].title;
-  
-  // Update all form labels
   document.getElementById("lbl-firstname").innerText = texts[lang].firstname;
   document.getElementById("lbl-lastname").innerText = texts[lang].lastname;
   document.getElementById("lbl-street").innerText = texts[lang].street;
@@ -581,18 +511,11 @@ function setLanguage(lang) {
   document.getElementById("lbl-birth").innerText = texts[lang].birth;
   document.getElementById("lbl-mobile").innerText = texts[lang].mobile;
   document.getElementById("lbl-homephone").innerText = texts[lang].homephone;
-  
-  // Update homephone option buttons
   document.getElementById("btn-home-yes").innerText = texts[lang].home_yes;
   document.getElementById("btn-home-no").innerText = texts[lang].home_no;
-  
-  // Update section headers
   document.getElementById("lbl-addperson").innerText = texts[lang].add;
-  
-  // Update main form buttons
   document.getElementById("btn-finish").innerText = texts[lang].finish;
   
-  // Update add person buttons
   if (lang === "de") {
     document.querySelector(".btn-partner").innerText = "➕ Ehepartner hinzufügen";
     document.querySelector(".btn-child").innerText = "➕ Kind hinzufügen";
@@ -601,58 +524,17 @@ function setLanguage(lang) {
     document.querySelector(".btn-child").innerText = "➕ Ребёнок добавить";
   }
   
-  // Update overview page elements (if visible)
   const overviewTitle = document.getElementById("overview-title");
-  if (overviewTitle) {
-    overviewTitle.innerText = texts[lang].overview;
-  }
+  if (overviewTitle) overviewTitle.innerText = texts[lang].overview;
   
-  // Update send button text
   const sendButton = document.querySelector(".btn-send");
-  if (sendButton) {
-    sendButton.innerText = texts[lang].send;
-  }
+  if (sendButton) sendButton.innerText = texts[lang].send;
   
-  // Update back button text
   const backButton = document.querySelector(".btn-back");
-  if (backButton) {
-    backButton.innerText = texts[lang].back;
-  }
-  
-  // Update any existing person blocks
-  const personBlocks = document.querySelectorAll(".person-block");
-  personBlocks.forEach(block => {
-    // Update the role title (h4)
-    const roleTitle = block.querySelector("h4");
-    const currentRole = block.getAttribute("data-role");
-    if (roleTitle) {
-      if (currentRole === "Ehepartner" || currentRole === "Супруг(а)") {
-        roleTitle.textContent = texts[lang].partner;
-        block.setAttribute("data-role", texts[lang].partner);
-      } else if (currentRole === "Kind" || currentRole === "Ребёнок") {
-        roleTitle.textContent = texts[lang].child;
-        block.setAttribute("data-role", texts[lang].child);
-      }
-    }
-    
-    // Update labels in person blocks
-    const labels = block.querySelectorAll("label");
-    labels.forEach((label, index) => {
-      if (index === 0) label.textContent = texts[lang].firstname;
-      else if (index === 1) label.textContent = texts[lang].lastname;
-      else if (index === 2) label.textContent = texts[lang].birth;
-      else if (index === 3) label.textContent = texts[lang].mobile;
-    });
-    
-    // Update mobile option buttons for children
-    const mobileOptions = block.querySelector(".child-mobile-options");
-    if (mobileOptions) {
-      const yesBtn = mobileOptions.querySelector(".btn-yes");
-      const noBtn = mobileOptions.querySelector(".btn-no");
-      if (yesBtn) yesBtn.innerText = texts[lang].home_yes;
-      if (noBtn) noBtn.innerText = texts[lang].home_no;
-    }
-  });
+  if (backButton) backButton.innerText = texts[lang].back;
+
+  document.getElementById("success-title").innerText = texts[lang].success_title;
+  document.getElementById("success-subtitle").innerText = texts[lang].success_subtitle;
 }
 
 function showHomephone() { 
@@ -660,31 +542,16 @@ function showHomephone() {
   const options = document.querySelector(".homephone-options");
   
   input.classList.remove("hidden"); 
-  options.style.display = "none"; // Buttons verschwinden
-  
-  // Auto-Fokus mit Tastatur - sofort und mehrfach versuchen
-  input.focus();
-  input.click();
-  
-  // Für iOS Safari - mehrere Versuche
-  setTimeout(() => {
-    input.focus();
-    input.click();
-    if (input.setSelectionRange) {
-      input.setSelectionRange(input.value.length, input.value.length);
-    }
-  }, 50);
+  options.style.display = "none";
   
   setTimeout(() => {
     input.focus();
-    input.click();
-  }, 200);
+  }, 100);
   
   homephoneValue = ""; 
 }
 
 function noHomephone() { 
-  // Ganze Sektion verschwinden lassen
   const section = document.getElementById("homephone-section");
   section.style.opacity = "0";
   section.style.transform = "translateY(-10px)";
@@ -722,7 +589,6 @@ function addPerson(type) {
   div.innerHTML = html;
   document.getElementById("extraPersons").appendChild(div);
   
-  // Scroll zur neuen Person
   setTimeout(() => {
     div.scrollIntoView({ 
       behavior: 'smooth', 
@@ -736,25 +602,11 @@ function showChildMobile(btn) {
   const options = btn.parentElement;
   
   input.classList.remove("hidden"); 
-  options.style.display = "none"; // Buttons verschwinden
-  
-  // Auto-Fokus mit Tastatur - sofort und mehrfach versuchen
-  input.focus();
-  input.click();
-  
-  // Für iOS Safari - mehrere Versuche
-  setTimeout(() => {
-    input.focus();
-    input.click();
-    if (input.setSelectionRange) {
-      input.setSelectionRange(input.value.length, input.value.length);
-    }
-  }, 50);
+  options.style.display = "none";
   
   setTimeout(() => {
     input.focus();
-    input.click();
-  }, 200);
+  }, 100);
   
   input.value = ""; 
 }
@@ -762,20 +614,16 @@ function showChildMobile(btn) {
 function noChildMobile(btn) { 
   const options = btn.parentElement;
   const label = options.previousElementSibling;
-  const input = options.nextElementSibling;
+  const input = btn.parentElement.nextElementSibling;
   
-  // Gesamte Handy-Sektion verschwinden lassen
   label.style.opacity = "0";
   label.style.transform = "translateY(-10px)";
   options.style.opacity = "0";
   options.style.transform = "translateY(-10px)";
-  input.style.opacity = "0";
-  input.style.transform = "translateY(-10px)";
   
   setTimeout(() => {
     label.style.display = "none";
     options.style.display = "none";
-    input.style.display = "none";
   }, 300);
   
   input.value = "-"; 
@@ -785,7 +633,6 @@ function collectData() {
   let rows = []; 
   let homeVal = (homephoneValue === "-") ? "-" : document.getElementById("homephone").value;
   
-  // Hauptperson
   rows.push([
     texts[currentLang].main_person,
     document.getElementById("firstname").value + " " + document.getElementById("lastname").value,
@@ -797,7 +644,6 @@ function collectData() {
     document.getElementById("city").value
   ]);
 
-  // Weitere Personen
   let persons = document.querySelectorAll(".person-block");
   persons.forEach(p => {
     let mobileInput = p.querySelector(".pmobile");
@@ -851,22 +697,7 @@ function showOverview() {
     tbody.appendChild(tr);
   });
 
-  // Update all text elements to current language before showing overview
-  document.getElementById("overview-title").innerText = texts[currentLang].overview;
-  
-  const sendButton = document.querySelector(".btn-send");
-  if (sendButton) {
-    sendButton.innerText = texts[currentLang].send;
-  }
-  
-  const backButton = document.querySelector(".btn-back");
-  if (backButton) {
-    backButton.innerText = texts[currentLang].back;
-  }
-
-  // Hide language selector on overview page
   document.querySelector(".lang-select").style.display = "none";
-  
   document.getElementById("main-form").style.display = "none";
   document.getElementById("overview").style.display = "block";
 }
@@ -874,59 +705,122 @@ function showOverview() {
 function goBack() { 
   document.getElementById("overview").style.display = "none"; 
   document.getElementById("main-form").style.display = "block"; 
-  
-  // Show language selector again on main form
   document.querySelector(".lang-select").style.display = "flex";
-  
-  document.getElementById("status-message").innerHTML = "";
 }
 
 function sendToGoogleSheets() {
-  if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbxA8z2NyYwUFe9jgHLf36kCGdgcATCtpLDojbV6ZKzJPWbWdv3bfRoNjaqHkfcc4cTE/exec") {
-    // Direkt zurücksetzen ohne Meldung
-    resetForm();
+  // Check if Google Script URL is set
+  if (GOOGLE_SCRIPT_URL === "DEINE_GOOGLE_APPS_SCRIPT_URL_HIER_EINFÜGEN") {
+    if (currentLang === "de") {
+      alert("Bitte füge zuerst deine Google Apps Script URL in den Code ein!");
+    } else {
+      alert("Пожалуйста, сначала добавьте URL вашего Google Apps Script в код!");
+    }
     return;
   }
 
-  // Jonathan-Nachrichten anzeigen
-  showStatus("Die Daten werden an Jonathan gesendet...", "loading");
-
   try {
     let data = collectData();
-    
-    // Familienname für Dateiname
     let familyName = document.getElementById("lastname").value || "Familie";
     let timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
     
-    // Verstecktes Formular ausfüllen
-    document.getElementById("googleForm").action = GOOGLE_SCRIPT_URL;
-    document.getElementById("form_familyName").value = familyName;
-    document.getElementById("form_timestamp").value = timestamp;
-    document.getElementById("form_data").value = JSON.stringify(data);
+    // Show loading state
+    const sendBtn = document.querySelector('.btn-send');
+    const originalText = sendBtn.innerText;
+    sendBtn.innerText = currentLang === "de" ? "Sende..." : "Отправка...";
+    sendBtn.disabled = true;
     
-    // Formular submitten
-    document.getElementById("googleForm").submit();
+    // Create hidden form for submission
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = GOOGLE_SCRIPT_URL;
+    form.target = 'hidden_iframe';
+    form.style.display = 'none';
     
-    // Erfolgsmeldung und dann zurücksetzen
-    setTimeout(() => {
-      showStatus("Jonathan hat die Daten bekommen", "success");
-      setTimeout(() => {
-        resetForm();
-      }, 2000);
-    }, 1500);
+    // Add form fields
+    const familyNameField = document.createElement('input');
+    familyNameField.name = 'familyName';
+    familyNameField.value = familyName;
+    form.appendChild(familyNameField);
+    
+    const timestampField = document.createElement('input');
+    timestampField.name = 'timestamp';
+    timestampField.value = timestamp;
+    form.appendChild(timestampField);
+    
+    const dataField = document.createElement('input');
+    dataField.name = 'data';
+    dataField.value = JSON.stringify(data);
+    form.appendChild(dataField);
+    
+    // Add form to page and submit
+    document.body.appendChild(form);
+    
+    // Create hidden iframe if it doesn't exist
+    let iframe = document.getElementById('hidden_iframe');
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.id = 'hidden_iframe';
+      iframe.name = 'hidden_iframe';
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
+    
+    // Listen for iframe load to detect completion
+    iframe.onload = function() {
+      // Clean up
+      if (form.parentNode) {
+        document.body.removeChild(form);
+      }
+      
+      // Reset button
+      sendBtn.innerText = originalText;
+      sendBtn.disabled = false;
+      
+      // Show success message after successful submission
+      showSuccessMessage();
+    };
+    
+    form.submit();
     
   } catch (error) {
     console.error('Error:', error);
-    // Bei Fehler auch zurücksetzen
-    setTimeout(() => {
-      resetForm();
-    }, 1000);
+    
+    // Reset button on error
+    const sendBtn = document.querySelector('.btn-send');
+    sendBtn.innerText = texts[currentLang].send;
+    sendBtn.disabled = false;
+    
+    // Show error message
+    if (currentLang === "de") {
+      alert("Ein Fehler ist aufgetreten. Bitte versuche es erneut.");
+    } else {
+      alert("Произошла ошибка. Пожалуйста, попробуйте еще раз.");
+    }
   }
+}
+
+function showSuccessMessage() {
+  // Update success message to current language
+  document.getElementById("success-title").innerText = texts[currentLang].success_title;
+  document.getElementById("success-subtitle").innerText = texts[currentLang].success_subtitle;
+  
+  // Update button text to current language
+  const newEntryBtn = document.querySelector("#success-screen .btn-finish");
+  if (newEntryBtn) {
+    newEntryBtn.innerText = texts[currentLang].new_entry;
+  }
+  
+  document.getElementById("main-form").style.display = "none";
+  document.getElementById("overview").style.display = "none";
+  document.getElementById("success-screen").classList.remove("hidden");
+  document.querySelector(".lang-select").style.display = "none";
 }
 
 function resetForm() {
   document.getElementById("main-form").style.display = "block";
   document.getElementById("overview").style.display = "none";
+  document.getElementById("success-screen").classList.add("hidden");
   document.getElementById("extraPersons").innerHTML = "";
   document.getElementById("firstname").value = "";
   document.getElementById("lastname").value = "";
@@ -941,22 +835,15 @@ function resetForm() {
   document.getElementById("homephone-section").style.opacity = "1";
   document.getElementById("homephone-section").style.transform = "translateY(0)";
   document.querySelector(".homephone-options").style.display = "flex";
-  document.getElementById("status-message").innerHTML = "";
   homephoneValue = "-";
-  
-  // Show language selector again
   document.querySelector(".lang-select").style.display = "flex";
-  
-  // Reset blinking - first field should blink
-  document.querySelectorAll('input').forEach(input => input.classList.remove('blink'));
-  document.getElementById("firstname").classList.add('blink');
   document.getElementById("firstname").focus();
 }
 
-// Initialize form when page loads
 window.onload = function() {
   document.getElementById("firstname").focus();
 };
 </script>
+
 </body>
 </html>
