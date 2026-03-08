@@ -438,7 +438,7 @@ button:active {
 </div>
 
 <script>
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzxJV0Q-dAs6yRmzqRPyMvOpH2jqtLia2vZZnfLQ8kBgylcR4J4cIVJeIp6-ByXawvTmA/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwrqhHEVXDd9ifOoGeJuPZwNyhQkKFRllxpnPA0aPxmxgFRNm9Z2tDUCP_-zYCuZzkK9Q/exec";
 
 let currentLang = "de"; 
 let homephoneValue = "-";
@@ -540,14 +540,9 @@ function setLanguage(lang) {
 function showHomephone() { 
   const input = document.getElementById("homephone");
   const options = document.querySelector(".homephone-options");
-  
   input.classList.remove("hidden"); 
   options.style.display = "none";
-  
-  setTimeout(() => {
-    input.focus();
-  }, 100);
-  
+  setTimeout(() => { input.focus(); }, 100);
   homephoneValue = ""; 
 }
 
@@ -555,11 +550,7 @@ function noHomephone() {
   const section = document.getElementById("homephone-section");
   section.style.opacity = "0";
   section.style.transform = "translateY(-10px)";
-  
-  setTimeout(() => {
-    section.style.display = "none";
-  }, 300);
-  
+  setTimeout(() => { section.style.display = "none"; }, 300);
   document.getElementById("homephone").value = ""; 
   homephoneValue = "-"; 
 }
@@ -588,26 +579,15 @@ function addPerson(type) {
   
   div.innerHTML = html;
   document.getElementById("extraPersons").appendChild(div);
-  
-  setTimeout(() => {
-    div.scrollIntoView({ 
-      behavior: 'smooth', 
-      block: 'start' 
-    });
-  }, 100);
+  setTimeout(() => { div.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
 }
 
 function showChildMobile(btn) { 
   const input = btn.parentElement.nextElementSibling; 
   const options = btn.parentElement;
-  
   input.classList.remove("hidden"); 
   options.style.display = "none";
-  
-  setTimeout(() => {
-    input.focus();
-  }, 100);
-  
+  setTimeout(() => { input.focus(); }, 100);
   input.value = ""; 
 }
 
@@ -615,17 +595,14 @@ function noChildMobile(btn) {
   const options = btn.parentElement;
   const label = options.previousElementSibling;
   const input = btn.parentElement.nextElementSibling;
-  
   label.style.opacity = "0";
   label.style.transform = "translateY(-10px)";
   options.style.opacity = "0";
   options.style.transform = "translateY(-10px)";
-  
   setTimeout(() => {
     label.style.display = "none";
     options.style.display = "none";
   }, 300);
-  
   input.value = "-"; 
 }
 
@@ -709,35 +686,22 @@ function goBack() {
 }
 
 function sendToGoogleSheets() {
-  // Check if Google Script URL is set
-  if (GOOGLE_SCRIPT_URL === "DEINE_GOOGLE_APPS_SCRIPT_URL_HIER_EINFÜGEN") {
-    if (currentLang === "de") {
-      alert("Bitte füge zuerst deine Google Apps Script URL in den Code ein!");
-    } else {
-      alert("Пожалуйста, сначала добавьте URL вашего Google Apps Script в код!");
-    }
-    return;
-  }
-
   try {
     let data = collectData();
     let familyName = document.getElementById("lastname").value || "Familie";
     let timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
     
-    // Show loading state
     const sendBtn = document.querySelector('.btn-send');
     const originalText = sendBtn.innerText;
     sendBtn.innerText = currentLang === "de" ? "Sende..." : "Отправка...";
     sendBtn.disabled = true;
     
-    // Create hidden form for submission
     const form = document.createElement('form');
     form.method = 'POST';
     form.action = GOOGLE_SCRIPT_URL;
     form.target = 'hidden_iframe';
     form.style.display = 'none';
     
-    // Add form fields
     const familyNameField = document.createElement('input');
     familyNameField.name = 'familyName';
     familyNameField.value = familyName;
@@ -753,10 +717,8 @@ function sendToGoogleSheets() {
     dataField.value = JSON.stringify(data);
     form.appendChild(dataField);
     
-    // Add form to page and submit
     document.body.appendChild(form);
     
-    // Create hidden iframe if it doesn't exist
     let iframe = document.getElementById('hidden_iframe');
     if (!iframe) {
       iframe = document.createElement('iframe');
@@ -766,18 +728,10 @@ function sendToGoogleSheets() {
       document.body.appendChild(iframe);
     }
     
-    // Listen for iframe load to detect completion
     iframe.onload = function() {
-      // Clean up
-      if (form.parentNode) {
-        document.body.removeChild(form);
-      }
-      
-      // Reset button
+      if (form.parentNode) document.body.removeChild(form);
       sendBtn.innerText = originalText;
       sendBtn.disabled = false;
-      
-      // Show success message after successful submission
       showSuccessMessage();
     };
     
@@ -785,32 +739,18 @@ function sendToGoogleSheets() {
     
   } catch (error) {
     console.error('Error:', error);
-    
-    // Reset button on error
     const sendBtn = document.querySelector('.btn-send');
     sendBtn.innerText = texts[currentLang].send;
     sendBtn.disabled = false;
-    
-    // Show error message
-    if (currentLang === "de") {
-      alert("Ein Fehler ist aufgetreten. Bitte versuche es erneut.");
-    } else {
-      alert("Произошла ошибка. Пожалуйста, попробуйте еще раз.");
-    }
+    alert(currentLang === "de" ? "Ein Fehler ist aufgetreten. Bitte versuche es erneut." : "Произошла ошибка. Пожалуйста, попробуйте еще раз.");
   }
 }
 
 function showSuccessMessage() {
-  // Update success message to current language
   document.getElementById("success-title").innerText = texts[currentLang].success_title;
   document.getElementById("success-subtitle").innerText = texts[currentLang].success_subtitle;
-  
-  // Update button text to current language
   const newEntryBtn = document.querySelector("#success-screen .btn-finish");
-  if (newEntryBtn) {
-    newEntryBtn.innerText = texts[currentLang].new_entry;
-  }
-  
+  if (newEntryBtn) newEntryBtn.innerText = texts[currentLang].new_entry;
   document.getElementById("main-form").style.display = "none";
   document.getElementById("overview").style.display = "none";
   document.getElementById("success-screen").classList.remove("hidden");
@@ -847,7 +787,3 @@ window.onload = function() {
 
 </body>
 </html>
-
-
-
-
